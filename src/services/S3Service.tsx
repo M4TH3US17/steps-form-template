@@ -35,7 +35,7 @@ const S3Service = {
                 Bucket: S3_BUCKET_NAME,
                 Key: actualFileName,
                 Body: binaryData,
-                ACL: "public-read" as ObjectCannedACL,
+               // ACL: "public-read" as ObjectCannedACL,
             };
 
             const command = new PutObjectCommand(params);

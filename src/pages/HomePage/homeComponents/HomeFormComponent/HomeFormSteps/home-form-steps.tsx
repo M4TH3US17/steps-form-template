@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import './home-form-steps.css';
 import { Person } from '../../../../../utils/objects/Person';
 import S3Service from '../../../../../services/S3Service';
+import { Utils } from '../../../../../utils/Utils';
 
 interface Props {
     person: Person;
@@ -27,12 +28,14 @@ export const HomeFormStepOneComponent: React.FC<Props> = ({ person, setPerson })
 
     const photoInputRef = useRef<HTMLInputElement | null>(null);
 
-    useEffect(() => {
+    const handleFileChange = () => {
         if (photoInputRef.current && photoInputRef.current.files && photoInputRef.current.files[0]) {
-            const photoFile = photoInputRef.current.files[0];
-            const imageUrl = S3Service.uploadImage(photoFile);
+            const selectedFile = photoInputRef.current.files[0];
+            const imageUrl = S3Service.uploadImage(selectedFile);
+
+            console.log(imageUrl)
         }
-    }, []);
+    };
 
     return (
         <div className='step step1' id='1'>
@@ -58,7 +61,7 @@ export const HomeFormStepOneComponent: React.FC<Props> = ({ person, setPerson })
                     <div className='step-content-input-item'>
                         <label className='step-content-input-text'>Photograph</label>
                        {/* <input className='step-content-input' type='file' accept='image/png, image/jpeg' onChange={async (e: any) => setPhotograph(await Utils.handleUpload(e) || '')} /> */}
-                       <input className='step-content-input' type='file' accept='image/png, image/jpeg' ref={photoInputRef} />
+                       <input className='step-content-input' type='file' accept='image/png, image/jpeg' ref={photoInputRef} onChange={() => handleFileChange()} />
                     </div>
 
                     <div className='step-content-input-item'>
