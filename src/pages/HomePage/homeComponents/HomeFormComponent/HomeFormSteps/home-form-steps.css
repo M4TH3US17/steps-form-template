@@ -1,0 +1,79 @@
+.step {
+    height: calc(100vh * 0.80);
+   /* border: 1px solid black; */
+}
+
+.step .step-content {
+
+}
+
+.step .step-content .step-content-text-container {
+
+}
+
+.step .step-content .step-content-input-container {
+    display:          flex;
+    flex-direction: column;
+    gap:              19px;
+    
+}
+
+.step .step-content .step-content-input-container .step-content-input-item {
+    display:          flex;
+    flex-direction: column;
+    gap:               7px;
+}
+
+.step .step-content .step-content-input-container .step-content-input-item .step-content-input-text {
+
+}
+
+.step .step-content .step-content-input-container .step-content-input-item .step-content-input-text {
+    font-weight: bold;
+    color: #505050;
+}
+
+.step .step-content .step-content-input-container .step-content-input-item .step-content-input {
+    height:       50px;
+    max-width:   500px;
+    border-radius: 4px;
+    padding: 0px 10px 0px 10px;
+    border: 1px solid rgba(73, 80, 87, 0.4);
+}
+
+/* lista */
+.go2392553372 {
+    padding-left: 0;
+    font-size: 21px;
+}
+
+.go2392553372 .go2150698616 {
+    width: 100%;
+}
+
+input[type="file"]::-webkit-file-upload-button {
+    font-size: 0;
+    visibility: hidden;
+}
+
+input[type="file"] {
+    padding: 0px;
+    border: 1px solid #ccc;
+    background-color: #f0f0f0;
+    color: #333;
+    cursor: pointer;
+  }
+
+@media (min-width: 1024px) {
+    .step .step-content .step-content-input-container .step-content-input-item .step-content-input-text {
+        font-size: 20px;
+    }
+
+    .step .step-content .step-content-input-container .step-content-input-item .step-content-input {
+        font-size: 20px;
+    }
+
+    .step {
+        padding: 30px 20px 0px 20px;
+    }
+}

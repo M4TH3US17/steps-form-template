@@ -1,0 +1,28 @@
+.home-form-component {
+    border: none;
+    background: #fff;
+}
+
+.home-form-component > div:first-child {
+    border: 1px solid #bebebe;
+}
+
+.home-form-component > div:last-child button {
+    padding: 10px 30px 10px 30px;
+}
+
+@media (min-width: 1024px) {
+    .home-form-component > div:first-child {
+        width: 80vw;
+    }
+
+    .home-form-component > div:last-child button {
+        margin-right:    0;
+        margin-left:  15px;
+        border-radius: 4px;
+        cursor:    pointer;
+    
+        padding: 15px 50px 15px 50px;
+        border: 1px solid rgba(128, 128, 128, 0.4);
+    }
+}
