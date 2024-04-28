@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './home-form-steps.css';
 import { Person } from '../../../../../utils/objects/Person';
-import { Utils } from '../../../../../utils/Utils';
 import S3Service from '../../../../../services/S3Service';
 
 interface Props {
@@ -10,7 +9,6 @@ interface Props {
 };
 
 let dataStep = new Person();
-const photoInputRef = useRef<HTMLInputElement | null>(null);
 
 export const HomeFormStepOneComponent: React.FC<Props> = ({ person, setPerson }) => {
     const [name, setName]             = useState<string>('');
@@ -27,10 +25,14 @@ export const HomeFormStepOneComponent: React.FC<Props> = ({ person, setPerson })
         setPerson({ ...dataStep });
     }, [name, lastName, age, photograph, birthday]);
 
-    if (photoInputRef.current && photoInputRef.current.files && photoInputRef.current.files[0]) {
-        const photoFile = photoInputRef.current.files[0];
-        const imageUrl = await S3Service.uploadImage(photoFile);
-    }
+    const photoInputRef = useRef<HTMLInputElement | null>(null);
+
+    useEffect(() => {
+        if (photoInputRef.current && photoInputRef.current.files && photoInputRef.current.files[0]) {
+            const photoFile = photoInputRef.current.files[0];
+            const imageUrl = S3Service.uploadImage(photoFile);
+        }
+    }, []);
 
     return (
         <div className='step step1' id='1'>

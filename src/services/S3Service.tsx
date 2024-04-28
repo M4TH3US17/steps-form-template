@@ -1,11 +1,19 @@
 import { S3Client, PutObjectCommand, ObjectCannedACL } from "@aws-sdk/client-s3";
 
+// Variável que especifica a região do bucket S3.
+const S3_BUCKET_REGION = 'x';
+// Variável que contém a chave de acesso do S3.
+const S3_ACCESS_KEY = 'x';
+// Variável que contém a chave secreta de acesso do S3.
+const AWS_S3_SECRET_KEY = 'x';
+// Variável que indica o nome do bucket S3.
+const S3_BUCKET_NAME = 'x';
 
 const client = new S3Client({
-    region: process.env.REACT_APP_S3_BUCKET_REGION,
+    region: S3_BUCKET_REGION,
     credentials: {
-        accessKeyId: process.env.REACT_APP_S3_ACCESS_KEY,
-        secretAccessKey: process.env.REACT_APP_AWS_S3_SECRET_KEY,
+        accessKeyId: S3_ACCESS_KEY,
+        secretAccessKey: AWS_S3_SECRET_KEY,
     },
 });
 
@@ -24,7 +32,7 @@ const S3Service = {
             }
 
             const params = {
-                Bucket: process.env.REACT_APP_S3_BUCKET_NAME,
+                Bucket: S3_BUCKET_NAME,
                 Key: actualFileName,
                 Body: binaryData,
                 ACL: "public-read" as ObjectCannedACL,
@@ -33,7 +41,7 @@ const S3Service = {
             const command = new PutObjectCommand(params);
             await client.send(command);
 
-            const url = `https://${process.env.REACT_APP_S3_BUCKET_NAME}.s3.amazonaws.com/${actualFileName}`;
+            const url = `https://${S3_BUCKET_NAME}.s3.amazonaws.com/${actualFileName}`;
 
             return url;
         } catch (error) {
